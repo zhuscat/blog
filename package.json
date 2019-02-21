@@ -1,0 +1,37 @@
+{
+  "name": "blog-of-zhusat",
+  "description": "source code of the blog",
+  "license": "MIT",
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "deploy": "gatsby build && node ./deploy.js",
+    "prettier": "prettier --config ./prettier.config.js --write \"src/**/*.{js,jsx,ts,tsx}\""
+  },
+  "dependencies": {
+    "gatsby": "^1.9.250",
+    "gatsby-link": "^1.6.40",
+    "gatsby-paginate": "^1.0.14",
+    "gatsby-plugin-glamor": "^1.6.13",
+    "gatsby-plugin-react-helmet": "^2.0.11",
+    "gatsby-plugin-typography": "^1.7.18",
+    "gatsby-remark-prismjs": "^2.0.2",
+    "gatsby-source-filesystem": "^1.5.34",
+    "gatsby-transformer-remark": "^1.7.40",
+    "glamorous": "^4.12.4",
+    "prettier": "^1.12.1",
+    "prismjs": "^1.14.0",
+    "react-disqus-thread": "^0.4.0",
+    "react-helmet": "^5.2.0",
+    "typography-breakpoint-constants": "^0.15.10",
+    "typography-plugin-code": "^0.16.11",
+    "typography-theme-bootstrap": "^0.16.7",
+    "typography-theme-fairy-gates": "^0.15.11",
+    "typography-theme-kirkham": "^0.16.3",
+    "typography-theme-lawton": "^0.15.10"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
+  }
+}
