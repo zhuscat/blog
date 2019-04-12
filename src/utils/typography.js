@@ -1,12 +1,14 @@
 import Typography from 'typography'
 import CodePlugin from 'typography-plugin-code'
-import presets, { colors } from './presets'
+import presets from './presets'
 import {
   MOBILE_MEDIA_QUERY,
   TABLET_MEDIA_QUERY,
   MIN_DEFAULT_MEDIA_QUERY,
   MIN_LARGER_DISPLAY_MEDIA_QUERY,
 } from 'typography-breakpoint-constants'
+
+const { colors } = presets
 
 const options = {
   headerFontFamily: [
@@ -161,8 +163,8 @@ const options = {
         // marginRight: `${rhythm(-options.blockMarginBottom)}`,
         // marginLeft: `${rhythm(-options.blockMarginBottom)}`,
         paddingRight: rhythm(options.blockMarginBottom),
-        paddingLeft: `${rhythm(options.blockMarginBottom / 5 * 4)}`,
-        borderLeft: `${rhythm(options.blockMarginBottom / 5 * 1)} solid ${colors.a[3]}`,
+        paddingLeft: `${rhythm((options.blockMarginBottom / 5) * 4)}`,
+        borderLeft: `${rhythm((options.blockMarginBottom / 5) * 1)} solid ${colors.a[3]}`,
         display: `block`,
       },
       '.gatsby-highlight::-webkit-scrollbar': {
@@ -287,8 +289,8 @@ const options = {
           // marginRight: `${rhythm(-options.blockMarginBottom * 1.5)}`,
           // marginLeft: `${rhythm(-options.blockMarginBottom * 1.5)}`,
           paddingRight: rhythm(options.blockMarginBottom * 1.5),
-          paddingLeft: `${rhythm(options.blockMarginBottom * 1.5 / 5 * 4)}`,
-          borderLeftWidth: `${rhythm(options.blockMarginBottom * 1.5 / 5 * 1)}`,
+          paddingLeft: `${rhythm(((options.blockMarginBottom * 1.5) / 5) * 4)}`,
+          borderLeftWidth: `${rhythm(((options.blockMarginBottom * 1.5) / 5) * 1)}`,
         },
       },
       [MIN_LARGER_DISPLAY_MEDIA_QUERY]: {
@@ -334,4 +336,6 @@ const options = {
 
 const typography = new Typography(options)
 
-export default typography
+const { rhythm, scale } = typography
+
+export { rhythm, scale, typography as default }
