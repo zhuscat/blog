@@ -54,7 +54,7 @@ export default ({ children, data }) => (
     </g.Div>
     {children()}
     <g.Div marginTop="64px" color="#aaa" fontSize="14px">
-      <g.Div>&copy; 2015 - 2018 zhuscat</g.Div>
+      <g.Div>&copy; 2015 - 2019 zhuscat</g.Div>
       <g.Div>
         Hosted on <a href="//github.com">Github</a> and <a href="//coding.net">Coding.net</a>
       </g.Div>
