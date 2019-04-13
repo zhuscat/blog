@@ -1,6 +1,8 @@
 import React from 'react'
-import g from 'glamorous'
 import Button from '../../components/Button'
+import Layout from '../../components/layout'
+import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 const languages = [{ key: 'zh-cmn', name: '普通话' }, { key: 'zh-wuu', name: '吴语-温州话' }]
 
@@ -22,35 +24,45 @@ export default class About extends React.Component {
     }
 
     return (
-      <div>
+      <Layout>
+        <Helmet>
+          <title>关于 - {this.props.data.site.siteMetadata.title}</title>
+        </Helmet>
         <div>
-          {languages.map(item => (
-            <Button
-              key={item.key}
-              active={item.key === this.state.lang}
-              onClick={() => this.setState({ lang: item.key })}
-            >
-              {item.name}
-            </Button>
-          ))}
+          <div>
+            {languages.map(item => (
+              <Button
+                key={item.key}
+                active={item.key === this.state.lang}
+                onClick={() => this.setState({ lang: item.key })}
+              >
+                {item.name}
+              </Button>
+            ))}
+          </div>
+          <div>
+            <h1 style={{ color: 'black', fontWeight: 'bold', marginBottom: 0 }}>
+              {post.frontmatter.title}
+            </h1>
+            <div style={{ fontSize: 'smaller' }}>{post.frontmatter.date}</div>
+            <div style={{ marginTop: '112px' }} dangerouslySetInnerHTML={{ __html: post.html }} />
+          </div>
         </div>
-        <div>
-          <h1 style={{ color: 'black', fontWeight: 'bold', marginBottom: 0 }}>
-            {post.frontmatter.title}
-          </h1>
-          <div style={{ fontSize: 'smaller' }}>{post.frontmatter.date}</div>
-          <div style={{ marginTop: '112px' }} dangerouslySetInnerHTML={{ __html: post.html }} />
-        </div>
-      </div>
+      </Layout>
     )
   }
 }
 
 export const query = graphql`
   query AboutMeQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { id: { regex: "//about//" } }
+      filter: { fields: { slug: { regex: "/^/pages/about//" } } }
     ) {
       edges {
         node {
@@ -63,7 +75,7 @@ export const query = graphql`
           fields {
             slug
           }
-          excerpt
+          excerpt(truncate: true, format: PLAIN)
         }
       }
     }

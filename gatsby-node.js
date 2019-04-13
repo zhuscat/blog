@@ -1,19 +1,18 @@
-const path = require(`path`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
-const createPaginatedPages = require("gatsby-paginate");
-
+const path = require(`path`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
+const createPaginatedPages = require('gatsby-paginate')
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   const { createNodeField } = boundActionCreators
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `posts` })
+    const slug = createFilePath({ node, getNode })
     createNodeField({
       node,
       name: `slug`,
       value: slug,
     })
   }
-};
+}
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
@@ -21,12 +20,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     graphql(`
       {
         allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC },
-          filter: {
-            id: {
-              regex: "/\/posts\//"
-            }
-          }
+          sort: { fields: [frontmatter___date], order: DESC }
+          filter: { fields: { slug: { regex: "/^/posts//" } } }
         ) {
           totalCount
           edges {
@@ -41,7 +36,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               fields {
                 slug
               }
-              excerpt
+              excerpt(truncate: true, format: PLAIN, pruneLength: 100)
             }
           }
         }
@@ -51,15 +46,15 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       createPaginatedPages({
         edges: result.data.allMarkdownRemark.edges,
         createPage: createPage,
-        pageTemplate: "src/templates/index.js",
+        pageTemplate: 'src/templates/index.js',
         pageLength: 10, // This is optional and defaults to 10 if not used
-        pathPrefix: "", // This is optional and defaults to an empty string if not used
-        context: {} // This is optional and defaults to an empty object if not used
-      });
+        pathPrefix: '', // This is optional and defaults to an empty string if not used
+        context: {}, // This is optional and defaults to an empty object if not used
+      })
 
       // 博文页
       result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-        const postPath = path.join('/posts', node.fields.slug)
+        const postPath = path.resolve(node.fields.slug)
 
         createPage({
           path: postPath,
@@ -73,4 +68,4 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       resolve()
     })
   })
-};
+}
