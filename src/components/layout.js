@@ -75,23 +75,8 @@ export default ({ children }) => (
           <g.Div marginTop="64px" color="#aaa" fontSize="14px">
             <g.Div>&copy; 2015 - 2019 zhuscat</g.Div>
             <g.Div>
-              Hosted on <a href="//github.com">Github</a> and <a href="//coding.net">Coding.net</a>
+              Hosted on <a href="//github.com">Github</a>
             </g.Div>
-            <g.A
-              href="//coding.net"
-              css={{
-                borderBottom: 'none',
-                marginLeft: '-18px',
-                ':hover': {
-                  backgroundColor: 'transparent',
-                },
-              }}
-            >
-              <g.Img
-                marginBottom="0"
-                src="https://dn-coding-net-production-static.qbox.me/static/d028a9456b15526cc64eba6bd36012a8.svg"
-              />
-            </g.A>
           </g.Div>
         </g.Div>
       )
