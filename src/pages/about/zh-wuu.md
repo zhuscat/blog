@@ -12,7 +12,9 @@ lang: zh-wuu
 
 喜欢个明星是 [IU](https://zh.wikipedia.org/wiki/IU_(%E8%89%BA%E4%BA%BA))。
 
-居竟还是搭狡调个游戏有 FGO 伉 Splatoon 2。
+~~居竟还是搭狡调个游戏有 FGO 伉 Splatoon 2。~~
+
+居竟还是搭狡调个游戏有 FF14。
 
 你还可以宿居厘地方寻着我：
 

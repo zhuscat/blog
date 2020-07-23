@@ -12,7 +12,9 @@ lang: zh-cmn
 
 喜欢的明星是 [IU](https://zh.wikipedia.org/wiki/IU_(%E8%89%BA%E4%BA%BA))。
 
-最近还在玩的游戏有 FGO 和 Splatoon 2。
+~~最近还在玩的游戏有 FGO 和 Splatoon 2。~~
+
+最近还在玩的游戏有 FF14。
 
 你还可以在这些地方找到我：
 
