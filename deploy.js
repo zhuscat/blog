@@ -1,4 +1,7 @@
 const ghpages = require('gh-pages')
+const process = require('process')
+
+console.log('Deploy: upload to GitHub')
 
 ghpages.publish(
   'public',
@@ -9,9 +12,11 @@ ghpages.publish(
   err => {
     if (err) {
       console.error(err)
-      console.error('Deploying to GitHub Failed')
+      console.error('Deploy: deploying to GitHub Failed')
+      process.exit(1)
       return
     }
-    console.log('Deployed to GitHub')
+
+    console.log('Deploy: deployed to GitHub')
   }
 )
