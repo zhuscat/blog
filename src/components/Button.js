@@ -1,7 +1,7 @@
 import React from 'react'
 import g from 'glamorous'
 
-export default ({ active, children, onClick }) => (
+const Button = ({ active, children, onClick }) => (
   <g.A
     display="inline-block"
     marginRight="16px"
@@ -17,3 +17,5 @@ export default ({ active, children, onClick }) => (
     {children}
   </g.A>
 )
+
+export default Button

@@ -1,5 +1,7 @@
 import React from 'react'
 
-export default ({ children }) => (
+const Container = ({ children }) => (
   <div style={{ margin: '3rem auto', maxWidth: 600 }}>{children}</div>
 )
+
+export default Container

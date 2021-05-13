@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import { Helmet } from 'react-helmet'
 
-export default ({ data }) => {
+const BlogPost = ({ data }) => {
   const post = data.markdownRemark
 
   // TODO: 直接在 onCreateNode 的时候生成信息比较好
@@ -74,6 +74,8 @@ export default ({ data }) => {
     </Layout>
   )
 }
+
+export default BlogPost
 
 export const query = graphql`
   query BlogPostQuery($slug: String!) {

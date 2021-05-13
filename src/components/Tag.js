@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({ name }) => (
+const Tag = ({ name }) => (
   <div
     style={{
       color: '#8f8f8f',
@@ -13,3 +13,5 @@ export default ({ name }) => (
     # {name}
   </div>
 )
+
+export default Tag

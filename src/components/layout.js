@@ -18,7 +18,7 @@ const query = graphql`
   }
 `
 
-export default ({ children }) => (
+const Layout = ({ children }) => (
   <StaticQuery
     query={query}
     render={data => {
@@ -87,3 +87,5 @@ export default ({ children }) => (
     }}
   />
 )
+
+export default Layout
