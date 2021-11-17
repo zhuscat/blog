@@ -73,10 +73,10 @@ const Layout = ({ children }) => (
           </g.Div>
           {children}
           <g.Div marginTop="64px" color="#aaa" fontSize="14px">
-            <g.Div marginBottom="16px">
+            {/* <g.Div marginBottom="16px">
               <g.Span>友情链接：</g.Span>
               <g.A href="https://kalasearch.cn" target="_blank">卡拉搜索</g.A>
-            </g.Div>
+            </g.Div> */}
             <g.Div>&copy; 2015 - 2019 zhuscat</g.Div>
             <g.Div>
               Hosted on <a href="//github.com">Github</a>
