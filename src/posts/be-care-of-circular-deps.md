@@ -299,6 +299,76 @@ exports.b = b;
 
 最终结果就不是报错，而是 `NaN` 了。
 
+## 真实应用的案例
+
+最近在改代码的时候，发现一个循环依赖的问题，不过问题没有暴露出来，原因是 `moduleConfig/loadConfigs` 恰巧执行的代码链路会走一个异步的流程，那个时候模块就构建完成了，但如果后续代码逻辑更改然后走同步流程了呢，那个时候就出BUG了。
+
+大概几个重要文件分布是这样的：
+
+```javascript
+// modules/apis/flyio/index.js
+// flyio 依赖了 api-sign
+import { sign } from '@/modules/utils/api-sign'
+//...
+export { rpConfig }
+```
+
+```javascript
+// modules/utils/api-sign.js
+// ！！！api-sign 依赖了 store
+import store from './store.js'
+```
+
+```javascript
+// main.js
+// 入口文件
+import App from './App.vue'
+import store from './store.js'
+```
+
+```javascript
+// 在 ./App.vue 中
+// ！！！@/modules/apis/echobox 依赖链路中有 flyio、api-sign
+import ApiEchobox from '@/modules/apis/echobox'
+```
+
+```javascript
+// store.js
+import registerStoreModules from '@/modules/installers/register-store-modules'
+
+const store = createStore()
+registerStoreModules(store)
+
+export default store
+```
+
+```javascript
+// @/modules/installers/register-store-modules
+// ！！！依赖链路中有 flyio
+export default (store, { useModules = [], ...requiredModuleOptions }) => {
+  store.dispatch('moduleConfig/loadConfigs', ['default'])
+}
+```
+
+让我们看一下依赖情况，require 表示前面的文件依赖后面的文件
+
+```
+main.js require App.vue
+App.vue require modules/apis/echobox.js
+modules/apis/echobox.js require modules/apis/flyio.js
+modules/apis/flyio.js require modules/utils/api-sign.js
+modules/utils/api-sign.js require store/index.js <- store/index ！！！第一次导入是由 api-sign.js 导入的
+store/index.js require modules/installers/register-store-modules.js
+modules/installer/register-store-modules.js require modules/stores/config.js
+modules/stores/config.js require modules/apis/config.js
+modules/apis/config.js require modules/apis/flyio.js <- flyio在前面由 echobox 已经加载过了，不过 exports 还没构建完成，不过会直接返回模块，此时 exports = {}
+...
+...
+然后在 register-store-modules里执行了 moduleConfig 的 loadConfigs，也就是执行了 config.js 中的方法，但是此时 flyio.js exports 还是 {}，由此报错
+```
+
+这里 `api-sign` 模块作为 API 层的一个模块，不应该依赖 `store` 模块。
+
 ## 如何避免
 
 实践上，良好的架构设计。
