@@ -21,11 +21,12 @@ const query = graphql`
 const Layout = ({ children }) => (
   <StaticQuery
     query={query}
-    render={data => {
+    render={(data) => {
       return (
         <g.Div
           margin={`0 auto`}
           maxWidth={900}
+          minHeight="100vh"
           backgroundColor="#fff"
           css={{
             [presets.Mobile]: {
@@ -40,6 +41,7 @@ const Layout = ({ children }) => (
         >
           <Helmet>
             <title>{data.site.siteMetadata.title}</title>
+            <link href="//at.alicdn.com/t/font_3123447_90wzds5gwto.css" rel="stylesheet" />
           </Helmet>
           <g.Div
             display="flex"
@@ -58,18 +60,33 @@ const Layout = ({ children }) => (
                 {data.site.siteMetadata.title.toUpperCase()}
               </g.H3>
             </Link>
-            <Link
-              css={{
-                textDecoration: 'none',
-                color: 'black',
-                borderBottom: 'none',
-                fontSize: '16px',
-                fontWeight: 'bold',
-              }}
-              to={`/about/`}
-            >
-              关于
-            </Link>
+            <g.Div>
+              <Link
+                css={{
+                  textDecoration: 'none',
+                  color: 'black',
+                  borderBottom: 'none',
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                  marginRight: '24px',
+                }}
+                to={`/anniversary/`}
+              >
+                <i className="iconfont icon-aixin" style={{ color: '#FF3355' }} />
+              </Link>
+              <Link
+                css={{
+                  textDecoration: 'none',
+                  color: 'black',
+                  borderBottom: 'none',
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                }}
+                to={`/about/`}
+              >
+                关于
+              </Link>
+            </g.Div>
           </g.Div>
           {children}
           <g.Div marginTop="64px" color="#aaa" fontSize="14px">
@@ -77,7 +94,7 @@ const Layout = ({ children }) => (
               <g.Span>友情链接：</g.Span>
               <g.A href="https://kalasearch.cn" target="_blank">卡拉搜索</g.A>
             </g.Div> */}
-            <g.Div>&copy; 2015 - 2019 zhuscat</g.Div>
+            <g.Div>&copy; 2015 - 2022 zhuscat</g.Div>
             <g.Div>
               Hosted on <a href="//github.com">Github</a>
             </g.Div>
