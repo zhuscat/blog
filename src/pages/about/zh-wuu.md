@@ -14,11 +14,10 @@ lang: zh-wuu
 
 ~~居竟还是搭狡调个游戏有 FGO 伉 Splatoon 2。~~
 
-居竟还是搭狡调个游戏有 FF14。
+~~居竟还是搭狡调个游戏有 FF14。~~
 
 你还可以宿居厘地方寻着我：
 
 - Github: [@zhuscat](https://github.com/zhuscat)
 - 知乎：[@朱良臻](https://www.zhihu.com/people/zhu-liang-zhen)
 - 豆瓣：[@Chandler](https://www.douban.com/people/48336573/)
-- Twitter: [@zhudx6512](https://twitter.com/zhudx6512)

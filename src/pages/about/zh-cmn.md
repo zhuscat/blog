@@ -14,11 +14,10 @@ lang: zh-cmn
 
 ~~最近还在玩的游戏有 FGO 和 Splatoon 2。~~
 
-最近还在玩的游戏有 FF14。
+~~最近还在玩的游戏有 FF14。~~
 
 你还可以在这些地方找到我：
 
 - Github: [@zhuscat](https://github.com/zhuscat)
 - 知乎：[@朱良臻](https://www.zhihu.com/people/zhu-liang-zhen)
 - 豆瓣：[@Chandler](https://www.douban.com/people/48336573/)
-- Twitter: [@zhudx6512](https://twitter.com/zhudx6512)
