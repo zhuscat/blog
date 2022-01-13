@@ -96,7 +96,7 @@ const Layout = ({ children }) => (
             </g.Div> */}
             <g.Div>&copy; 2015 - 2022 zhuscat</g.Div>
             <g.Div>
-              Hosted on <a href="//github.com">Github</a>
+              Hosted on <a href="//vercel.com/">Vercel</a>
             </g.Div>
           </g.Div>
         </g.Div>
