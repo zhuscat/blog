@@ -76,4 +76,5 @@ RSA 加解密中，两对密钥是可以互换的，可以用密钥A加密，密
 2. [聊聊密码学中的Padding](https://cloud.tencent.com/developer/article/1499219)
 3. [RSA中如果将公钥私钥交换使用会怎样？](https://segmentfault.com/q/1010000002932436)
 4. [在 RSA 加密中既然公钥和私钥是可逆的，为什么都是把公钥给别人，而不把私钥给别人，自己保存好公钥？](https://v2ex.com/t/704756)
+5. [如何设计一个API签名](https://cloud.tencent.com/developer/article/1557750)
 
