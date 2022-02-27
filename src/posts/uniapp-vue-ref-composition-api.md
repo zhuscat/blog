@@ -93,3 +93,31 @@ JSON.parse(JSON.stringify(ret))
 ```
 
 因为 viewRef.value 是 view 组件，当执行这段的时候会报循环结构，因为组件实例中存在循环结构
+
+## 题外话
+
+UniApp 中 `this.$refs` 是怎么实现的：
+
+给了定义 ref 的组件一相应的 class，然后利用小程序获取元素的能力把这些组件找到，相关代码：
+
+```javascript
+function initRefs (vm) {
+  const mpInstance = vm.$scope;
+  Object.defineProperty(vm, '$refs', {
+    get () {
+      const $refs = {};
+      selectAllComponents(mpInstance, '.vue-ref', $refs);
+      // TODO 暂不考虑 for 中的 scoped
+      const forComponents = mpInstance.selectAllComponents('.vue-ref-in-for');
+      forComponents.forEach(component => {
+        const ref = component.dataset.ref;
+        if (!$refs[ref]) {
+          $refs[ref] = [];
+        }
+        $refs[ref].push(component.$vm || component);
+      });
+      return $refs
+    }
+  });
+}
+```
