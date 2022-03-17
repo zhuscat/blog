@@ -78,6 +78,7 @@ mall.foo.com
 # 相关的题外话
 
 1. 跨域请求，客户端必须设置 withCredentials（XMLHttpRequest） 或者 credentials=include（Fetch），Set-Cookie 才能正确设置，否则会被忽略
+2. 在 Chrome 中，谷歌的登录系统通过插件和浏览器中统一登录状态，因此体验挺好的
 
 # 参考资料
 
