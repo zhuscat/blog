@@ -28,7 +28,7 @@ Set-Cookie: token=foo; Path=/; Domain=example.com
 
 ## 不同二级域名的 SSO
 
-假设我们有三个系统
+假设我们有三个系统（虚构的，请不要访问）
 
 1. sso.example.com：统一登录页面，当一个系统未登录的时候，会统一跳到统一登录页进行登录
 2. mall.foo.com：商城系统
