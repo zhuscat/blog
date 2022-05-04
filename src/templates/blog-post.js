@@ -1,5 +1,5 @@
 import React from 'react'
-import Disqus from 'disqus-react'
+import { Disqus } from 'gatsby-plugin-disqus'
 import Tag from '../components/Tag'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
@@ -34,7 +34,7 @@ const BlogPost = ({ data }) => {
         <div style={{ marginTop: '112px' }} dangerouslySetInnerHTML={{ __html: post.html }} />
         <div>
           {post.frontmatter.tags &&
-            post.frontmatter.tags.map(name => <Tag key={name} name={name} />)}
+            post.frontmatter.tags.map((name) => <Tag key={name} name={name} />)}
         </div>
         <div
           style={{
@@ -63,13 +63,13 @@ const BlogPost = ({ data }) => {
           </a>
           进行许可。
         </div>
-        <Disqus.DiscussionEmbed
-          shortname="zhuscat"
+        <Disqus
           config={{
+            url: `https://zhuscat.com${window.location.pathname}`,
             identifier,
+            title: post.frontmatter.title,
           }}
         />
-        {/* <ReactDisqusThread shortname="zhuscat" identifier={identifier} /> */}
       </div>
     </Layout>
   )

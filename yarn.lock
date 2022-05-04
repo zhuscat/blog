@@ -4928,6 +4928,11 @@ gatsby-paginate@^1.0.17:
   dependencies:
     path "^0.12.7"
 
+gatsby-plugin-disqus@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-disqus/-/gatsby-plugin-disqus-1.2.4.tgz#81990e857ddbbee5b4a0602e1afcfc62be5330f0"
+  integrity sha512-HoNJdTKKifRIGVMTMt1rbFModWm3UT7Mnae24R0kuR0bj5b1XzJF9pgQ78BSFVP+D7Yndn51+vEr8goDLIBOGg==
+
 gatsby-plugin-glamor@^3.5.0:
   version "3.11.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-glamor/-/gatsby-plugin-glamor-3.11.0.tgz#d97b0e4b2c0834b37a368a13f8f8d62dfc0aac06"

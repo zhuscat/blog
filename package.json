@@ -15,6 +15,7 @@
     "gatsby": "^3.5.0",
     "gatsby-link": "^3.5.0",
     "gatsby-paginate": "^1.0.17",
+    "gatsby-plugin-disqus": "^1.2.4",
     "gatsby-plugin-glamor": "^3.5.0",
     "gatsby-plugin-nprogress": "^3.5.0",
     "gatsby-plugin-react-helmet": "^4.5.0",
