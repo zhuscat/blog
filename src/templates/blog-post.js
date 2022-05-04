@@ -65,7 +65,6 @@ const BlogPost = ({ data }) => {
         </div>
         <Disqus
           config={{
-            url: `https://zhuscat.com${window.location.pathname}`,
             identifier,
             title: post.frontmatter.title,
           }}
