@@ -143,5 +143,7 @@ export default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__f
 
 然后是 `template` 和 `style` 模块的转换逻辑，比如上面转换后的代码有一个 `.css` 的导入，这个 `css` 文件的导入先会触发 `load`，`vite-plugin-vue` 会匹配到并返回之前解析的 `descriptor` 中的 css 代码，然后再进入 `transform` hook，此时就会调用 `style` 的转换逻辑了，具体内容我就不多说了。`template` 的转换逻辑也是类似
 
+还想说的一点是，知道了一个好用的包：[magic-string](https://www.npmjs.com/package/magic-string)，可以用这个包修改源文件，然后可以非常方便的生成 source map
+
 这大概就是一个 vue sfc 的转换流程了，大概描述一下算是自己加深一下理解吧，最好的方式还是直接[看代码](https://github.com/vitejs/vite/blob/d49e3fbfc0227e2e00ffc4a8d4152135c5cd6bb8/packages/plugin-vue/src/index.ts)
 
