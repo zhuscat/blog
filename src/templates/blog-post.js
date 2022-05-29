@@ -31,7 +31,11 @@ const BlogPost = ({ data }) => {
           {post.frontmatter.title}
         </h1>
         <div style={{ fontSize: 'smaller' }}>{post.frontmatter.date}</div>
-        <div style={{ marginTop: '112px' }} dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div
+          className="markdown-body"
+          style={{ marginTop: '112px' }}
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
         <div>
           {post.frontmatter.tags &&
             post.frontmatter.tags.map((name) => <Tag key={name} name={name} />)}

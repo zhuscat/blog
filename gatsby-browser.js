@@ -1,0 +1,5 @@
+import './src/styles/global.css'
+import './src/styles/markdown.css'
+import 'prism-theme-vars/base.css'
+import 'prism-theme-vars/themes/vitesse-light.css'
+import './src/styles/prism-vars.css'

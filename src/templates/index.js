@@ -14,7 +14,7 @@ const MyLink = g(Link)({
   },
 })
 
-const NavLink = props => {
+const NavLink = (props) => {
   if (!props.test) {
     return <Link to={props.url}>{props.text}</Link>
   } else {
@@ -24,8 +24,8 @@ const NavLink = props => {
 
 const List = ({ data, pageContext }) => {
   const { group, index, first, last, pageCount } = pageContext
-  const previousUrl = index - 1 === 1 ? '/' : "/" + (index - 1).toString()
-  const nextUrl = "/" + (index + 1).toString()
+  const previousUrl = index - 1 === 1 ? '/' : '/' + (index - 1).toString()
+  const nextUrl = '/' + (index + 1).toString()
 
   return (
     <Layout>
@@ -53,13 +53,13 @@ const List = ({ data, pageContext }) => {
             className="previousLink"
             style={{ display: 'inline-block', marginRight: first ? '0' : '16px' }}
           >
-            <NavLink test={first} url={previousUrl} text="← 更新" />
+            <NavLink test={first} url={previousUrl} text="← 上一页" />
           </div>
           <div style={{ display: 'inline-block', marginRight: '16px', color: '#666' }}>
             第 {index} 页 / 共 {pageCount} 页
           </div>
           <div className="nextLink" style={{ display: 'inline-block' }}>
-            <NavLink test={last} url={nextUrl} text="更旧 →" />
+            <NavLink test={last} url={nextUrl} text="下一页 →" />
           </div>
         </div>
       </div>
