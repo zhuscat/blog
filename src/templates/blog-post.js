@@ -1,9 +1,9 @@
 import React from 'react'
-import { Disqus } from 'gatsby-plugin-disqus'
 import Tag from '../components/Tag'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import { Helmet } from 'react-helmet'
+import Waline from '../components/Waline'
 
 const BlogPost = ({ data }) => {
   const post = data.markdownRemark
@@ -63,12 +63,7 @@ const BlogPost = ({ data }) => {
           </a>
           进行许可。
         </div>
-        <Disqus
-          config={{
-            identifier,
-            title: post.frontmatter.title,
-          }}
-        />
+        <Waline />
       </div>
     </Layout>
   )
