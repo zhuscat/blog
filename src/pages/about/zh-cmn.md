@@ -19,5 +19,5 @@ lang: zh-cmn
 你还可以在这些地方找到我：
 
 - Github: [@zhuscat](https://github.com/zhuscat)
-- 知乎：[@朱良臻](https://www.zhihu.com/people/zhu-liang-zhen)
+- 知乎：[@你啊你啊](https://www.zhihu.com/people/zhu-liang-zhen)
 - 豆瓣：[@Chandler](https://www.douban.com/people/48336573/)
