@@ -1,12 +1,14 @@
 ---
-title: WeakMap 如何被 Polyfill
+title: WeakMap 是如何被 Polyfill 的
 date: 2022-11-10 11:30:00
 category: 技术
 tags:
   - JavaScript
 ---
 
-在很多场景中，我们需要给一个对象关联一些元信息或者其他类型的各种信息
+今天突然在想 WeakMap 是如何被 Polyfill 的
+
+简单地介绍一下 WeakMap，在很多场景中，我们需要给一个对象关联一些元信息或者其他类型的各种信息
 
 WeakMap 可以用来做这样的事情。比如，以一个错误上报功能为例，我期望在任意的业务流程中，给一个错误添加一个元信息，使得当顶层捕获到这个错误的时候，如果发现有这个元信息，就不上报该错误
 
@@ -29,9 +31,9 @@ if (errorMeta.get(err)?.ignore) {
 
 使用 WeakMap 的好处是，WeakMap 不会影响其 key 被垃圾回收，如果在上面的例子中使用 Map 的话，只要 Map 实例还在某处被引用着，Error 对象就不会被垃圾回收
 
-进入正题，我突然想到的是，WeakMap 要如何被 Polyfill？原生支持 WeakMap 的 JS 引擎，应该存在一种机制实现 WeakMap。比如一个实现方式是，当某个对象被垃圾回收的时候，能够触发通知，这样就可以删除 WeakMap 中对应对象的建值
+进入正题，如果是原生支持 WeakMap 的 JS 引擎，应该存在一种机制实现 WeakMap。比如一个实现方式是，当某个对象被垃圾回收的时候，能够触发通知，这样就可以删除 WeakMap 中对应对象的键值
 
-但比如在只支持 ES5 的运行时中呢？看了几个方案，看起来唯一的方式就是在 key 中设置一个⌈不可见⌋的属性，确实，这种方式就不会影响 key 被垃圾回收了
+但比如在只支持 ES5 的运行时中呢？有什么办法可以不影响 key 被垃圾回收呢？看了几个方案，看起来唯一的方式就是在 key 中设置一个「不可见」的属性，确实，这种方式就不会影响 key 被垃圾回收了
 
 ```js
 MyWeakMap.prototype.set = function (key, value) {
@@ -41,7 +43,7 @@ MyWeakMap.prototype.set = function (key, value) {
 }
 ```
 
-这也以为这 WeakMap 不能被完美的 Polyfill，比如，如果一个对象不是可扩展的，就不能正常使用了
+不过这也意味 WeakMap 不能被完美的 Polyfill，比如，如果一个对象不是可扩展的，就不能正常使用了
 
 ```js
 Object.freeze(o)
