@@ -70,7 +70,7 @@ const registry = new FinalizationRegistry((heldValue) => {
 registry.register(theObject, "some value", theObject);
 // ...
 
-// 接触注册
+// 解除注册
 registry.unregister(theObject);
 ```
 
