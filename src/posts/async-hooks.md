@@ -307,7 +307,7 @@ http request: reqId:1 start:1668870998250 end:1668870999254
 
 ## 总结
 
-好了，最后来总结一下吧。
+好了，最后来总结一下吧
 
 为了实现基于请求的上下文，我们可以显式地传递上下文对象，也可以利用 async hooks 去构建一个隐式地在整个请求链路中传递的上下文。而在 Node.js 中，利用这种隐式地方式去构建一些基础层面的功能可能[更为常见](https://github.com/open-telemetry/opentelemetry-js)
 
