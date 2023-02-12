@@ -1,10 +1,10 @@
 import React from 'react'
-import g from 'glamorous'
+import styled from 'styled-components'
 import { Link } from 'gatsby-link'
 import { rhythm } from '../utils/typography'
 import Layout from '../components/layout'
 
-const MyLink = g(Link)({
+const MyLink = styled(Link)({
   textDecoration: 'none',
   borderBottom: '1px solid #ececec',
   color: '#000',
@@ -12,6 +12,20 @@ const MyLink = g(Link)({
   ':hover': {
     borderBottom: '1px solid #000',
   },
+})
+
+const Title = styled.h3({
+  marginBottom: rhythm(1 / 4),
+})
+
+const PostDate = styled.div({
+  color: '#555',
+  marginBottom: rhythm(1 / 8),
+})
+
+const Excerpt = styled.p({
+  color: '#888',
+  fontSize: '16px',
 })
 
 const NavLink = (props) => {
@@ -32,20 +46,11 @@ const List = ({ data, pageContext }) => {
       <div>
         {group.map(({ node }) => (
           <div key={node.id}>
-            <g.H3 marginBottom={rhythm(1 / 4)}>
-              <MyLink
-                to={`${node.fields.slug}`}
-                css={{ textDecoration: `none`, borderBottom: '1px solid #ececec', color: '#000' }}
-              >
-                {node.frontmatter.title}
-              </MyLink>
-            </g.H3>
-            <g.Div color="#555" marginBottom={rhythm(1 / 8)}>
-              {node.frontmatter.date}
-            </g.Div>
-            <g.P color="#888" fontSize="16px">
-              {node.excerpt}
-            </g.P>
+            <Title>
+              <MyLink to={`${node.fields.slug}`}>{node.frontmatter.title}</MyLink>
+            </Title>
+            <PostDate>{node.frontmatter.date}</PostDate>
+            <Excerpt>{node.excerpt}</Excerpt>
           </div>
         ))}
         <div style={{ marginTop: '64px' }}>
@@ -68,26 +73,3 @@ const List = ({ data, pageContext }) => {
 }
 
 export default List
-
-// export const query = graphql`
-//   query IndexQuery {
-//     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-//       totalCount
-//       edges {
-//         node {
-//           id
-//           timeToRead
-//           frontmatter {
-//             title
-//             date(formatString: "MMM DD, YYYY")
-//             tags
-//           }
-//           fields {
-//             slug
-//           }
-//           excerpt
-//         }
-//       }
-//     }
-//   }
-// `

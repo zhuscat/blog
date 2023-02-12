@@ -1,5 +1,5 @@
 import React from 'react'
-import g from 'glamorous'
+import styled from 'styled-components'
 import { Link } from 'gatsby-link'
 import './highlight.css'
 import presets from '../utils/presets'
@@ -18,82 +18,88 @@ const query = graphql`
   }
 `
 
+const Container = styled.div`
+  margin: 0 auto;
+  max-width: 900px;
+  min-height: 100vh;
+  background-color: #fff;
+  ${presets.Mobile} {
+    padding: ${rhythm(0.5)};
+  }
+
+  ${presets.Phablet} {
+    padding: ${rhythm(2)};
+    padding-top: ${rhythm(1.5)};
+    padding-bottom: ${rhythm(0.5)};
+  }
+`
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 64px;
+`
+
+const Logo = styled.h3`
+  margin-bottom: 0;
+  margin-top: 0;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+`
+
+const HeartIconLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  border-bottom: none;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 24px;
+`
+
+const AboutLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  border-bottom: none;
+  font-size: 16px;
+  font-weight: bold;
+`
+
+const Footer = styled.div`
+  margin-top: 64px;
+  color: #aaa;
+  font-size: 14px;
+`
+
 const Layout = ({ children }) => {
   const data = useStaticQuery(query)
 
   return (
-    <g.Div
-      margin={`0 auto`}
-      maxWidth={900}
-      minHeight="100vh"
-      backgroundColor="#fff"
-      css={{
-        [presets.Mobile]: {
-          padding: rhythm(0.5),
-        },
-        [presets.Phablet]: {
-          padding: rhythm(2),
-          paddingTop: rhythm(1.5),
-          paddingBottom: rhythm(0.5),
-        },
-      }}
-    >
+    <Container>
       <Helmet>
         <title>{data.site.siteMetadata.title}</title>
         <link href="//at.alicdn.com/t/font_3123447_90wzds5gwto.css" rel="stylesheet" />
       </Helmet>
-      <g.Div display="flex" justifyContent="space-between" alignItems="center" marginBottom="64px">
+      <Header>
         <Link style={{ borderBottom: 'none' }} to={`/`}>
-          <g.H3
-            marginBottom={0}
-            marginTop={0}
-            display={`inline-block`}
-            fontSize="20px"
-            fontWeight="bold"
-          >
-            {data.site.siteMetadata.title.toUpperCase()}
-          </g.H3>
+          <Logo>{data.site.siteMetadata.title.toUpperCase()}</Logo>
         </Link>
-        <g.Div>
-          <Link
-            css={{
-              textDecoration: 'none',
-              color: 'black',
-              borderBottom: 'none',
-              fontSize: '16px',
-              fontWeight: 'bold',
-              marginRight: '24px',
-            }}
-            to={`/anniversary/`}
-          >
+        <div>
+          <HeartIconLink to={`/anniversary/`}>
             <i className="iconfont icon-aixin" style={{ color: '#FF3355' }} />
-          </Link>
-          <Link
-            css={{
-              textDecoration: 'none',
-              color: 'black',
-              borderBottom: 'none',
-              fontSize: '16px',
-              fontWeight: 'bold',
-            }}
-            to={`/about/`}
-          >
-            关于
-          </Link>
-        </g.Div>
-      </g.Div>
+          </HeartIconLink>
+          <AboutLink to={`/about/`}>关于</AboutLink>
+        </div>
+      </Header>
       {children}
-      <g.Div marginTop="64px" color="#aaa" fontSize="14px">
-        {/* <g.Div marginBottom="16px">
-        <g.Span>友情链接：</g.Span>
-        <g.A href="https://kalasearch.cn" target="_blank">卡拉搜索</g.A>
-      </g.Div> */}
-        <g.Div>&copy; 2015 - 2022 zhuscat</g.Div>
-        <g.Div>
+      <Footer>
+        <div>&copy; 2015 - 2022 zhuscat</div>
+        <div>
           Hosted on <a href="//vercel.com/">Vercel</a>
-        </g.Div>
-      </g.Div>
-    </g.Div>
+        </div>
+      </Footer>
+    </Container>
   )
 }
 

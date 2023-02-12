@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../../components/layout'
+import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 import dayjs from 'dayjs'
-import g from 'glamorous'
 
 const start = dayjs('2020-03-28 21:30')
 
@@ -24,31 +24,49 @@ function getCountInfo() {
   }
 }
 
-function Unit(props) {
-  return <g.Div css={{ paddingLeft: 8, paddingRight: 8, fontSize: 18 }}>{props.children}</g.Div>
-}
+const Unit = styled.div`
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 18px;
+`
 
-function UnitBox(props) {
-  return (
-    <g.Div
-      css={{
-        minWidth: 40,
-        height: 40,
-        padding: 8,
-        backgroundColor: 'rgb(32, 36, 38)',
-        borderRadius: 8,
-        boxSizing: 'border-box',
-        color: '#fff',
-        fontSize: 18,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      {props.children}
-    </g.Div>
-  )
-}
+const UnitBox = styled.div`
+  min-width: 40px;
+  height: 40px;
+  padding: 8px;
+  background-color: rgb(32, 36, 38);
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #ffffff;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+`
+
+const MainImage = styled.img`
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+`
+
+const Names = styled.div`
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 8px;
+`
+
+const Title = styled.div`
+  margin-bottom: 16px;
+  font-size: 18px;
+`
 
 export default function Anniversary(props) {
   const [countInfo, setCountInfo] = useState(getCountInfo())
@@ -77,17 +95,12 @@ export default function Anniversary(props) {
       <Helmet>
         <title>纪念日 - {props.data.site.siteMetadata.title}</title>
       </Helmet>
-      <div
-        style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center' }}
-      >
-        <g.Img
-          src="https://s2.loli.net/2022/01/07/skOiQIfT7xdXPFR.jpg"
-          css={{ width: 200, height: 200, borderRadius: 8 }}
-        />
-        <g.Div css={{ fontSize: 32, fontWeight: 'bold', marginBottom: 8 }}>
+      <Container>
+        <MainImage src="https://s2.loli.net/2022/01/07/skOiQIfT7xdXPFR.jpg" />
+        <Names>
           Z <i className="iconfont icon-aixin" style={{ color: '#FF3355', fontSize: 32 }} /> C
-        </g.Div>
-        <g.Div css={{ marginBottom: 16, fontSize: 18 }}>已经过了</g.Div>
+        </Names>
+        <Title>已经过了</Title>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <UnitBox>{countInfo.days}</UnitBox>
           <Unit>天</Unit>
@@ -98,7 +111,7 @@ export default function Anniversary(props) {
           <UnitBox>{countInfo.seconds}</UnitBox>
           <Unit>秒</Unit>
         </div>
-      </div>
+      </Container>
     </Layout>
   )
 }
