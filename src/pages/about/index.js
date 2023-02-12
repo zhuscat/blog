@@ -53,31 +53,29 @@ export default class About extends React.Component {
   }
 }
 
-export const query = graphql`
-  query AboutMeQuery {
-    site {
-      siteMetadata {
-        title
-      }
+export const query = graphql`query AboutMeQuery {
+  site {
+    siteMetadata {
+      title
     }
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { slug: { regex: "/^/pages/about//" } } }
-    ) {
-      edges {
-        node {
-          html
-          frontmatter {
-            title
-            date(formatString: "DD MMMM, YYYY")
-            lang
-          }
-          fields {
-            slug
-          }
-          excerpt(truncate: true, format: PLAIN)
+  }
+  allMarkdownRemark(
+    sort: {frontmatter: {date: DESC}}
+    filter: {fields: {slug: {regex: "/^/pages/about//"}}}
+  ) {
+    edges {
+      node {
+        html
+        frontmatter {
+          title
+          date(formatString: "DD MMMM, YYYY")
+          lang
         }
+        fields {
+          slug
+        }
+        excerpt(truncate: true, format: PLAIN)
       }
     }
   }
-`
+}`

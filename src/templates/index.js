@@ -1,6 +1,6 @@
 import React from 'react'
 import g from 'glamorous'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby-link'
 import { rhythm } from '../utils/typography'
 import Layout from '../components/layout'
 
@@ -14,7 +14,7 @@ const MyLink = g(Link)({
   },
 })
 
-const NavLink = props => {
+const NavLink = (props) => {
   if (!props.test) {
     return <Link to={props.url}>{props.text}</Link>
   } else {
@@ -24,8 +24,8 @@ const NavLink = props => {
 
 const List = ({ data, pageContext }) => {
   const { group, index, first, last, pageCount } = pageContext
-  const previousUrl = index - 1 === 1 ? '/' : "/" + (index - 1).toString()
-  const nextUrl = "/" + (index + 1).toString()
+  const previousUrl = index - 1 === 1 ? '/' : '/' + (index - 1).toString()
+  const nextUrl = '/' + (index + 1).toString()
 
   return (
     <Layout>

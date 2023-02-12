@@ -17,31 +17,29 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   return new Promise((resolve, reject) => {
-    graphql(`
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          filter: { fields: { slug: { regex: "/^/posts//" } } }
-        ) {
-          totalCount
-          edges {
-            node {
-              id
-              timeToRead
-              frontmatter {
-                title
-                date(formatString: "MMM DD, YYYY")
-                tags
-              }
-              fields {
-                slug
-              }
-              excerpt(truncate: true, format: PLAIN, pruneLength: 100)
-            }
-          }
+    graphql(`{
+  allMarkdownRemark(
+    sort: {frontmatter: {date: DESC}}
+    filter: {fields: {slug: {regex: "/^/posts//"}}}
+  ) {
+    totalCount
+    edges {
+      node {
+        id
+        timeToRead
+        frontmatter {
+          title
+          date(formatString: "MMM DD, YYYY")
+          tags
         }
+        fields {
+          slug
+        }
+        excerpt(truncate: true, format: PLAIN, pruneLength: 100)
       }
-    `).then(result => {
+    }
+  }
+}`).then(result => {
       // 分页
       createPaginatedPages({
         edges: result.data.allMarkdownRemark.edges,
@@ -67,5 +65,5 @@ exports.createPages = ({ graphql, actions }) => {
       })
       resolve()
     })
-  })
+  });
 }

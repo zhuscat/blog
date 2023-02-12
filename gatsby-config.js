@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'ZhusCafe',
   },
+  trailingSlash: 'always',
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
