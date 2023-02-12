@@ -94,7 +94,7 @@ const Layout = ({ children }) => {
       </Header>
       {children}
       <Footer>
-        <div>&copy; 2015 - 2022 zhuscat</div>
+        <div>&copy; 2015 - 2023 zhuscat</div>
         <div>
           Hosted on <a href="//vercel.com/">Vercel</a>
         </div>
