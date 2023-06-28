@@ -296,7 +296,7 @@ $(function() {
 })
 ```
 
-如上所示，设置了 tooltip 体的内容为 The value is {point.y}
+如上所示，设置了 tooltip 体的内容为 `The value is {point.y}`
 
 其中， `{point.y}` 指的是该点的 y 轴的值
 

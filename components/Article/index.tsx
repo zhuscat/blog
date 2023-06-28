@@ -12,7 +12,7 @@ function CodeBlock(
   >
 ) {
   return (
-    /** @ts-expect-error RSC */
+    // @ts-ignore
     <Code
       {...props}
       theme="min-light"

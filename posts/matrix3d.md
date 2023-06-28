@@ -51,6 +51,8 @@ transform: matrix3d(a1,  b1,  c1,  d1,  a2,  b2,  c2,  d2,  a3,  b3,  c3,  d3,  
 ## 意义
 
 CSS 所代表的矩阵如下所示:
+
+```
 $$
 \begin{bmatrix}
    a1 & a2 & a3 & a4 \\\
@@ -59,11 +61,13 @@ $$
    d1 & d2 & d3 & d4
  \end{bmatrix}
 $$
+```
 
 一般来说,  d1,  d2,  d3,  d4 的取值分别为 0,  0,  0,  1.
 
 这个矩阵会和原来元素的 x, y, z 进行矩阵乘法, 从而得到新的坐标, 实现了变换
 
+```
 $$
 \begin{bmatrix}
    a_1 & a_2 & a_3 & a_4 \\\
@@ -86,6 +90,7 @@ $$
      0 + 0 + 0 + 1
  \end{bmatrix}
 $$
+```
 
 这就是 `matrix3d` 做的事情了.
 
@@ -93,6 +98,7 @@ $$
 
 **rotateX(a):**
 
+```
 $$
 \begin{bmatrix}
    1 & 0 & 0 & 0 \\\
@@ -101,9 +107,11 @@ $$
    0 & 0 & 0 & 1
  \end{bmatrix}
 $$
+```
 
 **rotateY(a):**
 
+```
 $$
 \begin{bmatrix}
    cos(a) & 0 & sin(a) & 0 \\\
@@ -112,9 +120,11 @@ $$
    0 & 0 & 0 & 1
  \end{bmatrix}
 $$
+```
 
 **rotateZ(a):**
 
+```
 $$
 \begin{bmatrix}
    cos(a) & -sin(a) & 0 & 0 \\\
@@ -123,9 +133,11 @@ $$
    0 & 0 & 0 & 1
  \end{bmatrix}
 $$
+```
 
 **translateX(t):**
 
+```
 $$
 \begin{bmatrix}
    1 & 0 & 0 & t \\\
@@ -134,9 +146,11 @@ $$
    0 & 0 & 0 & 1
  \end{bmatrix}
 $$
+```
 
 **translateY(t):**
 
+```
 $$
 \begin{bmatrix}
    1 & 0 & 0 & 0 \\\
@@ -145,9 +159,11 @@ $$
    0 & 0 & 0 & 1
  \end{bmatrix}
 $$
+```
 
 **translateZ(t):**
 
+```
 $$
 \begin{bmatrix}
    1 & 0 & 0 & 0 \\\
@@ -156,9 +172,11 @@ $$
    0 & 0 & 0 & 1
  \end{bmatrix}
 $$
+```
 
 **skewX(ax):**
 
+```
 $$
 \begin{bmatrix}
    1 & tan(ay) & 0 & 0 \\\
@@ -167,9 +185,11 @@ $$
    0 & 0 & 0 & 1
  \end{bmatrix}
 $$
+```
 
 **skewX(ay):**
 
+```
 $$
 \begin{bmatrix}
    1 & 0 & 0 & 0 \\\
@@ -178,9 +198,11 @@ $$
    0 & 0 & 0 & 1
  \end{bmatrix}
 $$
+```
 
 **skewX(az):**
 
+```
 $$
 \begin{bmatrix}
    1 & tan(a_y) & 0 & 0 \\\
@@ -189,10 +211,13 @@ $$
    0 & 0 & 0 & 1
  \end{bmatrix}
 $$
+```
 
 **变换中心改变：**
 
 设新的中心点为 $x_0$, $y_0$, $z_0$.
+
+```
 $$
 \begin{bmatrix}
    a_1 & a_2 & a_3 & a_4 \\\
@@ -215,8 +240,11 @@ $$
      0
  \end{bmatrix}
 $$
+```
+
 然后用原来矩阵的最后一列减去这个向量.
 
+```
 $$
 \begin{bmatrix}
    a_1 & a_2 & a_3 & a_4 - a_1x_0 - a_2y_0 - a_3z_0 \\\
@@ -225,6 +253,7 @@ $$
    0 & 0 & 0 & 1
  \end{bmatrix}
 $$
+```
 
 这些矩阵也就是 transformjs 所用到的, 大家可以阅读源码看到这些矩阵.
 

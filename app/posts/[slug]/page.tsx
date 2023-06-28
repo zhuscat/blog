@@ -2,7 +2,9 @@ import { allPosts } from 'contentlayer/generated'
 import { Article } from '@/components/Article'
 
 export const generateStaticParams = async () =>
-  allPosts.map((post) => ({ slug: post._raw.flattenedPath }))
+  allPosts.map((post) => ({
+    slug: post._raw.flattenedPath.replace(/^posts\//, ''),
+  }))
 
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find(

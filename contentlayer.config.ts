@@ -10,7 +10,6 @@ export const Post = defineDocumentType(() => ({
     date: { type: 'date', required: true },
     tags: { type: 'list', of: { type: 'string' }, required: false },
     category: { type: 'string', required: false },
-    excerpt: { type: 'string', required: false },
     lang: { type: 'string', required: false },
   },
   computedFields: {
@@ -21,9 +20,6 @@ export const Post = defineDocumentType(() => ({
     excerpt: {
       type: 'string',
       resolve: (post) => {
-        if (post.excerpt) {
-          return post.excerpt
-        }
         return post.body.raw
           .split('\n')
           .find(

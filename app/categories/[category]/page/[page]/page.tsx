@@ -13,7 +13,7 @@ export async function generateStaticParams() {
   set.forEach((category) => {
     categories.push(category)
   })
-  return categories.map((category) => {
+  return categories.flatMap((category) => {
     const filteredPosts = allPosts.filter((post) => post.category === category)
     return [...new Array(Math.ceil(filteredPosts.length / POST_PAGE_SIZE))].map(
       (_, idx) => {

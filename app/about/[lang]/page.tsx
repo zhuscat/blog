@@ -4,7 +4,9 @@ import { Tabs } from '@/components/Tab'
 import { aboutLangs } from '@/constants'
 
 export const generateStaticParams = async () =>
-  allAbouts.map((about) => ({ slug: about._raw.flattenedPath }))
+  allAbouts.map((about) => ({
+    lang: about._raw.flattenedPath.replace(/^about\//, ''),
+  }))
 
 const AboutLayout = ({ params }: { params: { lang: string } }) => {
   const about = allAbouts.find(
