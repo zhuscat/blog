@@ -13,6 +13,16 @@ const links = [
 export default function Links() {
   return (
     <div className="mx-auto max-w-3xl">
+      <div className="px-4 pt-8 pb-2 text-zinc-500">
+        互加友链可以
+        <Link
+          href="mailto:zhudx6512@gmail.com"
+          className="text-sky-500 font-semibold"
+        >
+          发邮件
+        </Link>
+        给我
+      </div>
       <div className="py-8 px-4 grid sm:grid-cols-2 gap-2">
         {links.map((link) => {
           return (
