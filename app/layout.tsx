@@ -24,9 +24,15 @@ function Header() {
         </Link>
         <Link
           href="/about"
-          className="hover:text-blue-500 hover:font-semibold text-base"
+          className="hover:text-blue-500 hover:font-semibold text-base mr-4"
         >
           关于
+        </Link>
+        <Link
+          href="/links"
+          className="hover:text-blue-500 hover:font-semibold text-base"
+        >
+          友链
         </Link>
       </div>
     </header>
