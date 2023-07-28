@@ -8,6 +8,7 @@ const links = [
   { name: 'h3ee9ine', href: 'https://www.blog.ajie39.top' },
   { name: '4s.sk', href: 'https://4s.sk' },
   { name: '飞刀博客', href: 'https://www.feidaoboke.com' },
+  { name: 'mephisto', href: 'https://mephisto.cc' },
 ]
 
 export default function Links() {
