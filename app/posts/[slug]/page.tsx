@@ -12,7 +12,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
       post._raw.flattenedPath === 'posts/' + decodeURIComponent(params.slug)
   )
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`)
-  return { title: `${post.title} | ZHUSCAFE` }
+  return { title: `${post.title} | ZhusCafe` }
 }
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
