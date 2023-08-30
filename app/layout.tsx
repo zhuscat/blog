@@ -28,12 +28,6 @@ function Header() {
         >
           关于
         </Link>
-        <Link
-          href="/links"
-          className="hover:text-blue-500 hover:font-semibold text-base"
-        >
-          友链
-        </Link>
       </div>
     </header>
   )
@@ -50,8 +44,18 @@ export default function RootLayout({
         <Header></Header>
         <main>{children}</main>
         <footer className="mx-auto max-w-3xl text-sm px-4 text-gray-400 pt-2 pb-4">
-          <div className="mb-1">©️ 2015 - 2023 zhuscat</div>
-          <div>Hosted on Vercel</div>
+          <div className="mb-1 flex items-center">
+            <div>©️ 2015 - 2023 zhuscat</div>
+            <div className="mx-1">·</div>
+            <Link
+              href="/links"
+              className="hover:text-blue-500 hover:font-semibold"
+            >
+              友链
+            </Link>
+            <div className="mx-1">·</div>
+            <div>Hosted on Vercel</div>
+          </div>
         </footer>
       </body>
     </html>
