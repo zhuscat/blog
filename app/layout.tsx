@@ -2,6 +2,7 @@ import TablerHeartFilled from '@/components/Icon/TablerHeartFilled'
 import './globals.scss'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
+import { Analytics } from '@vercel/analytics/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -57,6 +58,7 @@ export default function RootLayout({
             <div>Hosted on Vercel</div>
           </div>
         </footer>
+        <Analytics />
       </body>
     </html>
   )
