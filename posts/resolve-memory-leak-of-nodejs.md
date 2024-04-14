@@ -48,7 +48,7 @@ onUnmounted(() => {
 
 之前遇到过，用的一个三方组件，在 `setup` 中[直接进行了定时操作](https://github.com/quelchx/vue-writer/blob/4bd9902b9b6551d948d0e37df318482dda0673f1/src/vue-writer.vue#L86)，导致我们的应用内存泄露
 
-还有之前我们代码中，使用 VueUse 的 useEventBus 的时候，出现了这样的代码：
+还有之前我们代码中，使用 VueUse 的 `useEventBus` 的时候，出现了这样的代码：
 
 ```vue
 <script setup>
@@ -84,7 +84,7 @@ onMounted(() => {
 
 还可以使用 Heap Snapshot 之类的方式去分析
 
-之前排查问题的时候，因为本地测试生成的 Heap Snapshot 看不出问题，我还给应用接入了 [easy monitor](https://github.com/hyj1991/easy-monitor)，给线上应用生成 Heap Snapshot 去看。这里需要注意的点是，因为生成 Heap Snapshot 也是会大幅增加内存，而比如我们使用的 k8s 会设置 pod 内存上限，所以要注意生成 Heap Snapshot 的时间点，防止生成过程中 OOM。另外，生成过程中也会导致服务无法处理请求，如果要保证线上服务稳定，需要和运维配合，不将流量打到在生成 Heap Snapshot 的 Pod 上
+之前排查问题的时候，因为本地测试生成的 Heap Snapshot 看不出问题，我还给应用接入了 [easy monitor](https://github.com/hyj1991/easy-monitor)，给线上应用生成 Heap Snapshot 去看。这里需要注意的点是，因为生成 Heap Snapshot 也是会大幅增加内存，而比如我们使用的 k8s 会设置 Pod 内存上限，所以要注意生成 Heap Snapshot 的时间点，防止生成过程中 OOM。另外，生成过程中也会导致服务无法处理请求，如果要保证线上服务稳定，需要和运维配合，不将流量打到在生成 Heap Snapshot 的 Pod 上
 
 遗憾的是，当时并没有通过 Heap Snapshot 排查出具体问题点，不管是通过 Summary 还是 Comparison 都没有明显地看出问题所在，最后还是搜 GitHub 发现是 i18n 的问题，这在上面已经讲过了
 
